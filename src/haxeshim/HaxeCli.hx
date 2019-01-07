@@ -69,7 +69,7 @@ class HaxeCli {
   function dispatch(args:Array<String>) {
 
     function getScope()
-      return gracefully(Scope.seek.bind({ cwd: null }));
+      return gracefully(Scope.seek.bind({ startLookingIn: Sys.getEnv('SCOPE_PATH') }));
 
     switch args {
       case _.indexOf('--wait') => wait if (wait >=0 && wait < args.length - 1):
